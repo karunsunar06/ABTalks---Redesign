@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/Hero";
+import { WhyConsistent } from "@/components/WhyConsistent";
+import { HowItWorks } from "@/components/HowItWorks";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -27,6 +29,9 @@ function Index() {
   return (
     <main className="min-h-screen bg-background">
       <Hero />
+      <WhyConsistent />
+      <HowItWorks />
     </main>
+
   );
 }
