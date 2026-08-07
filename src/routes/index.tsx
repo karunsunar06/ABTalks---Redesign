@@ -29,6 +29,9 @@ function Index() {
   return (
     <main className="min-h-screen bg-background">
       <Hero />
+      <WhyConsistent />
+      <HowItWorks />
     </main>
+
   );
 }
