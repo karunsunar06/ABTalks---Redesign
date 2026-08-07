@@ -1,9 +1,9 @@
-import { Play, LayoutGrid, BookOpen, Users } from "lucide-react";
+import { Play, LayoutGrid, Compass, Users } from "lucide-react";
 
 const actions = [
   { label: "Resume Challenge", icon: Play },
   { label: "Browse Challenges", icon: LayoutGrid },
-  { label: "AI Resources", icon: BookOpen },
+  { label: "Explore", icon: Compass },
   { label: "Community", icon: Users },
 ];
 
@@ -17,7 +17,7 @@ export function QuickActions() {
         {actions.map(({ label, icon: Icon }) => (
           <button
             key={label}
-            className="flex flex-col items-start gap-3 rounded-2xl border border-border bg-card p-4 text-left transition-all duration-200 hover:bg-secondary active:scale-[0.97]"
+            className="flex flex-col items-start gap-3 rounded-2xl border border-border bg-surface p-4 text-left shadow-card transition-all duration-200 hover:bg-secondary active:scale-[0.97]"
           >
             <span className="inline-flex size-9 items-center justify-center rounded-xl bg-accent-soft text-accent">
               <Icon className="size-4" strokeWidth={2.2} />
