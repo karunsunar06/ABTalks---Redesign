@@ -1,144 +1,111 @@
-# AIBTAlks
+# ABTalks — AI Building Challenge
 
-ABTalks is an AI-first career and learning ecosystem that helps high school and college students become industry-ready through a 60-day AI Building Challenge.
+> **Don't just learn AI. Build with it.**
 
-Students build one project every day, maintain a GitHub streak, publish on LinkedIn, and gradually build a real portfolio.
+ABTalks is an AI-first career and learning ecosystem focused on helping high-school students, college students, and early professionals become more industry-ready through practical AI education, building challenges, community-driven learning, and exposure to the real AI ecosystem.
 
-The redesign should focus on helping first-time visitors immediately understand the value of joining.
+This project is a mobile-first redesign of the ABTalks 60-Day AI Building Challenge, created for the ABTalks Vibe Code Hackathon.
 
-Target Audience:
+---
 
-- High school students interested in AI
+## The Idea
 
-- College students
+The AI era is moving quickly, and many students are worried about being left behind.
 
-- Beginners who fear being left behind in the AI era
+ABTalks turns learning into a simple daily habit:
 
-- Students who mostly use their phones at night after college
+**Learn → Build → Ship → Share → Repeat**
 
-Design Goals:
+Students choose a learning/building track and work on practical projects throughout the challenge.
 
-- Mobile-first (390px width is the primary design target)
+Each day's progress can become public proof of work through:
 
-- Premium but approachable
+- GitHub commits
+- LinkedIn posts
+- Personal projects
+- Skills developed
+- Achievements earned
 
-- Clean and modern
+The goal isn't to compete with other students.
 
-- Easy on the eyes
+The goal is to help each student keep moving forward.
 
-- Minimal but motivating
+---
 
-- Not childish
+## What We Built
 
-- Not corporate
+The redesign focuses on three core experiences:
 
-- Not overloaded with information
+### 1. Landing Page
 
-Hero Structure:
+**Route:** `/`
 
-1. Minimal top navigation
+The first experience for a student discovering ABTalks.
 
-- ABTalks logo
+It communicates:
 
-- Hamburger menu
+- What ABTalks is
+- Why practical AI building matters
+- What the 60-day challenge means
+- Why consistency matters
+- What students can gain from participating
 
-2. Small trust badge
+The visual direction is intentionally clean, modern, mobile-first, and easy on the eyes.
 
-Example:
+---
 
-"India's AI Building Challenge"
+### 2. Student Dashboard
 
-3. Main Headline
+**Route:** `/dashboard`
 
-Don't just learn AI.
+The dashboard is designed as the student's daily home.
 
-Build with it.
-
-4. Supporting text
-
-Explain that students build real AI projects over 60 days, maintain GitHub consistency, create a public portfolio, and become industry-ready.
-
-Keep it concise.
-
-5. Primary CTA
-
-Start Your 60-Day Journey
-
-6. Secondary CTA
-
-See How It Works
-
-7. Hero Visual
-
-Instead of generic illustrations, showcase a beautiful mobile phone mockup displaying the ABTalks dashboard with:
+It includes:
 
 - Current streak
+- XP / personal progress
+- Today's recommended build
+- Project portfolio
+- GitHub activity
+- Learning / skill progress
+- Quick actions
+- Personal achievements
+- Public profile
 
-- Today's challenge
+The dashboard intentionally focuses on **personal progress rather than leaderboards or student-to-student competition**.
 
-- Progress
+The core message is:
 
-- Clean modern UI
+> **You've got one thing to ship today.**
 
-The product should sell itself.
+---
 
-8. Small trust indicators below
+### 3. Challenge Day
 
-Examples:
+**Route:** `/day/12`
 
-• Real AI Projects
+The Challenge Day experience is designed around completing one practical build.
 
-• GitHub Portfolio
+Students can:
 
-• Daily Streaks
+- Understand the day's challenge
+- Read what they are expected to build
+- Understand the skills involved
+- Follow the requirements
+- Access useful guidance/resources
+- Submit GitHub proof of work
+- Submit LinkedIn proof of work
+- Complete the day's challenge
 
-• Industry Ready
+The page is designed to keep the student focused and avoid unnecessary scrolling.
 
-Design Direction:
+---
 
-- Soft white background
+# Route Map
 
-- Clean typography
+The required routes are:
 
-- Rounded cards
-
-- Modern spacing
-
-- Premium SaaS feel
-
-- No mascot
-
-- No cartoon illustrations
-
-- No excessive gradients
-
-- No glassmorphism
-
-- Use subtle accents that work in both light and dark mode
-
-- The UI should feel like a polished startup product rather than a typical EdTech website.
-
-Do NOT generate the remaining sections of the landing page.
-
-Focus only on creating an exceptional hero section that encourages students to begin the challenge.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/03280784-0616-4043-ae69-92b6e37ce0cd).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+```text
+/
+/dashboard
+/day/12
