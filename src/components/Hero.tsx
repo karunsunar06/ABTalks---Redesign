@@ -1,4 +1,5 @@
 import { Menu, ArrowRight, Flame, Github, Play, Check } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 const trustItems = [
   "Real AI Projects",
@@ -125,10 +126,13 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col gap-3">
-            <button className="group inline-flex h-13 items-center justify-center gap-2 rounded-2xl bg-foreground px-6 text-[15px] font-semibold text-background shadow-elevated transition-transform active:scale-[0.98]">
+            <Link
+              to="/dashboard"
+              className="group inline-flex h-13 items-center justify-center gap-2 rounded-2xl bg-foreground px-6 text-[15px] font-semibold text-background shadow-elevated transition-transform active:scale-[0.98]"
+            >
               Start Your 60-Day Journey
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-            </button>
+            </Link>
             <button className="inline-flex h-13 items-center justify-center gap-2 rounded-2xl border border-border bg-card px-6 text-[15px] font-semibold text-foreground transition-colors hover:bg-secondary">
               <Play className="size-3.5" strokeWidth={2.5} />
               See How It Works
