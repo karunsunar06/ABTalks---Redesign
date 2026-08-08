@@ -50,7 +50,7 @@ export function TodaysBuild({ onShipped }: { onShipped?: () => void }) {
     window.location.href = "/day/12";
   }}
   className="group inline-flex h-13 w-full items-center justify-center gap-2 rounded-2xl bg-foreground px-6 text-[15px] font-semibold text-background transition-transform duration-200 hover:brightness-110 active:scale-[0.97]"
->">
+>
           Continue Building
           <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
         </button>
