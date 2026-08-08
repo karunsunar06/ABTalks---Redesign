@@ -30,6 +30,8 @@
   --radius-4xl: calc(var(--radius) + 16px);
   --color-accent-soft: var(--accent-soft);
   --color-accent-deep: var(--accent-deep);
+  --color-build: var(--build);
+  --color-build-soft: var(--build-soft);
   --color-surface: var(--surface);
   --shadow-elevated: var(--shadow-elevated);
   --shadow-soft: var(--shadow-soft);
@@ -88,6 +90,8 @@
   --accent-foreground: oklch(0.99 0.01 177);
   --accent-soft: oklch(0.963 0.026 177);
   --accent-deep: oklch(0.435 0.082 179);
+  --build: oklch(0.62 0.152 44);
+  --build-soft: oklch(0.964 0.024 55);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.916 0.007 200);
@@ -129,6 +133,8 @@
   --accent-foreground: oklch(0.17 0.03 178);
   --accent-soft: oklch(0.255 0.038 178);
   --accent-deep: oklch(0.82 0.09 178);
+  --build: oklch(0.74 0.135 48);
+  --build-soft: oklch(0.27 0.05 48);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(1 0 0 / 12%);
@@ -298,6 +304,27 @@
   .animate-wave-flow-slow,
   .animate-flame-glow,
   .animate-streak-pop {
+    animation: none;
+  }
+}
+
+@keyframes check-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@utility animate-check-in {
+  animation: check-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-check-in {
     animation: none;
   }
 }
