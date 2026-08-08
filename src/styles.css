@@ -90,6 +90,8 @@
   --accent-foreground: oklch(0.99 0.01 177);
   --accent-soft: oklch(0.963 0.026 177);
   --accent-deep: oklch(0.435 0.082 179);
+  --build: oklch(0.62 0.152 44);
+  --build-soft: oklch(0.964 0.024 55);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.916 0.007 200);
