@@ -1,16 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { Github, FolderGit2, Globe, Sparkles, Flame, Trophy, Rocket } from "lucide-react";
+import { Github, Globe, Sparkles, Flame, Trophy, Rocket } from "lucide-react";
 
-function CardShell({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
+function CardShell({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <article className="w-[85%] shrink-0 snap-center sm:w-[19rem]">
-      <div className="h-full rounded-3xl border border-border bg-card p-5 transition-transform duration-200 active:scale-[0.98]">
+      <div className="h-full rounded-3xl border border-border bg-card p-5 shadow-soft transition-transform duration-300 ease-out active:scale-[0.98]">
         <h3 className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
           {label}
         </h3>
@@ -20,9 +14,9 @@ function CardShell({
   );
 }
 
-function PortfolioCard() {
+function ProjectsCard() {
   return (
-    <CardShell label="Portfolio">
+    <CardShell label="Projects">
       <div className="space-y-4">
         <div className="flex items-baseline gap-2">
           <span className="text-4xl font-bold leading-none tracking-tight text-foreground">
@@ -65,38 +59,25 @@ function PortfolioCard() {
   );
 }
 
-const skills = [
+const learning = [
   { name: "Python", level: "Strong", value: 82 },
-  { name: "Prompt Engineering", level: "Advancing", value: 68 },
-  { name: "LLMs", level: "Advancing", value: 61 },
+  { name: "LLMs", level: "Advancing", value: 68 },
+  { name: "Prompt Engineering", level: "Advancing", value: 61 },
   { name: "Machine Learning", level: "Building", value: 38 },
 ];
 
-function SkillsCard() {
-  const ref = useRef<HTMLDivElement>(null);
+function LearningCard() {
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) {
-
-          setShown(true);
-          io.disconnect();
-        }
-      },
-      { threshold: 0.35 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
+    const id = requestAnimationFrame(() => setShown(true));
+    return () => cancelAnimationFrame(id);
   }, []);
 
   return (
-    <CardShell label="Skills">
-      <div ref={ref} className="space-y-4">
-        {skills.map((skill, i) => (
+    <CardShell label="Learning">
+      <div className="space-y-4">
+        {learning.map((skill, i) => (
           <div key={skill.name}>
             <div className="flex items-baseline justify-between">
               <span className="text-[13px] font-semibold tracking-tight text-foreground">
@@ -108,10 +89,10 @@ function SkillsCard() {
             </div>
             <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-secondary">
               <div
-                className="h-full rounded-full bg-accent shadow-[0_0_10px_var(--accent)] transition-[width] duration-[1100ms] ease-out"
+                className="h-full rounded-full bg-accent transition-[width] duration-[1100ms] ease-out"
                 style={{
                   width: shown ? `${skill.value}%` : "0%",
-                  transitionDelay: `${i * 110}ms`,
+                  transitionDelay: `${260 + i * 110}ms`,
                 }}
               />
             </div>
@@ -136,10 +117,10 @@ function AchievementsCard() {
         {achievements.map(({ name, note, icon: Icon }) => (
           <div
             key={name}
-            className="flex items-center gap-3 rounded-2xl bg-surface p-3 transition-colors hover:bg-secondary"
+            className="flex items-center gap-3 rounded-2xl bg-surface p-3 transition-colors duration-200 hover:bg-secondary"
           >
-            <span className="inline-flex size-8 items-center justify-center rounded-xl border border-border bg-card text-accent">
-              <Icon className="size-[15px]" strokeWidth={2.2} />
+            <span className="inline-flex size-8 items-center justify-center rounded-xl border border-border bg-card text-foreground">
+              <Icon className="size-[15px]" strokeWidth={2} />
             </span>
             <div className="min-w-0">
               <p className="truncate text-[13px] font-semibold tracking-tight text-foreground">
@@ -150,8 +131,7 @@ function AchievementsCard() {
           </div>
         ))}
         <div className="flex items-center gap-2 pt-1 text-[11px] font-medium text-muted-foreground">
-          <Trophy className="size-3.5" strokeWidth={2.2} />
-          <FolderGit2 className="hidden size-3.5" />
+          <Trophy className="size-3.5" strokeWidth={2} />
           4 of 12 unlocked
         </div>
       </div>
@@ -178,8 +158,8 @@ export function ProgressCarousel() {
         className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-5 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={{ scrollBehavior: "smooth", overscrollBehaviorX: "contain" }}
       >
-        <PortfolioCard />
-        <SkillsCard />
+        <ProjectsCard />
+        <LearningCard />
         <AchievementsCard />
       </div>
 
