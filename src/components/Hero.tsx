@@ -1,5 +1,6 @@
 import { Menu, ArrowRight, Flame, Github, Play, Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { WaveBackground } from "@/components/WaveBackground";
 
 const trustItems = [
   "Real AI Projects",
@@ -89,6 +90,7 @@ function PhoneMockup() {
 export function Hero() {
   return (
     <header className="relative overflow-hidden bg-background">
+      <WaveBackground className="h-[520px]" />
       <div className="pointer-events-none absolute -top-32 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/10 blur-[90px]" />
 
       <div className="relative mx-auto w-full max-w-md px-5 sm:max-w-3xl sm:px-8">
