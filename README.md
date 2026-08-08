@@ -1,13 +1,5 @@
 # AIBTAlks
 
-You are a senior Product Designer at Apple, Stripe, Linear, and Duolingo combined.
-
-Your task is NOT to build the entire website.
-
-Design ONLY the Hero Section of the landing page for ABTalks.
-
-Context:
-
 ABTalks is an AI-first career and learning ecosystem that helps high school and college students become industry-ready through a 60-day AI Building Challenge.
 
 Students build one project every day, maintain a GitHub streak, publish on LinkedIn, and gradually build a real portfolio.
