@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { WaveBackground } from "@/components/WaveBackground";
 
 function greetingFor(hour: number) {
   if (hour < 12) return "Good morning";
