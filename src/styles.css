@@ -29,6 +29,7 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-deep: var(--accent-deep);
   --color-surface: var(--surface);
   --shadow-elevated: var(--shadow-elevated);
   --shadow-soft: var(--shadow-soft);
@@ -83,14 +84,15 @@
   --secondary-foreground: oklch(0.3 0.014 240);
   --muted: oklch(0.958 0.005 240);
   --muted-foreground: oklch(0.53 0.017 250);
-  --accent: oklch(0.655 0.116 181);
-  --accent-foreground: oklch(0.99 0.01 181);
-  --accent-soft: oklch(0.957 0.03 181);
+  --accent: oklch(0.545 0.098 177);
+  --accent-foreground: oklch(0.99 0.01 177);
+  --accent-soft: oklch(0.963 0.026 177);
+  --accent-deep: oklch(0.435 0.082 179);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(0.916 0.007 200);
   --input: oklch(0.916 0.007 200);
-  --ring: oklch(0.655 0.116 181);
+  --ring: oklch(0.545 0.098 177);
   --shadow-elevated: 0 1px 2px oklch(0.185 0.014 240 / 0.05), 0 16px 36px -24px oklch(0.185 0.014 240 / 0.22);
   --shadow-soft: 0 1px 2px oklch(0.185 0.014 240 / 0.04), 0 8px 24px -20px oklch(0.185 0.014 240 / 0.18);
 
@@ -123,9 +125,10 @@
   --secondary-foreground: oklch(0.93 0.005 250);
   --muted: oklch(0.27 0.014 250);
   --muted-foreground: oklch(0.71 0.014 250);
-  --accent: oklch(0.75 0.115 181);
-  --accent-foreground: oklch(0.18 0.03 181);
-  --accent-soft: oklch(0.26 0.042 181);
+  --accent: oklch(0.72 0.104 178);
+  --accent-foreground: oklch(0.17 0.03 178);
+  --accent-soft: oklch(0.255 0.038 178);
+  --accent-deep: oklch(0.82 0.09 178);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(1 0 0 / 12%);
@@ -235,6 +238,66 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-mesh-shift {
+    animation: none;
+  }
+}
+
+
+@keyframes wave-flow {
+  0%,
+  100% {
+    transform: translate3d(-4%, 0, 0) scaleY(1);
+  }
+  50% {
+    transform: translate3d(4%, -1.5%, 0) scaleY(1.08);
+  }
+}
+
+@keyframes flame-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes streak-pop {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.14);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@utility animate-wave-flow {
+  animation: wave-flow 26s ease-in-out infinite;
+}
+
+@utility animate-wave-flow-slow {
+  animation: wave-flow 38s ease-in-out infinite reverse;
+}
+
+@utility animate-flame-glow {
+  animation: flame-glow 3.4s ease-in-out infinite;
+}
+
+@utility animate-streak-pop {
+  animation: streak-pop 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-wave-flow,
+  .animate-wave-flow-slow,
+  .animate-flame-glow,
+  .animate-streak-pop {
     animation: none;
   }
 }
