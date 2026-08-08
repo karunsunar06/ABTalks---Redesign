@@ -1,9 +1,9 @@
-import { Home, LayoutGrid, Compass, User } from "lucide-react";
+import { Home, LayoutGrid, BookOpen, User } from "lucide-react";
 
 const items = [
   { label: "Home", icon: Home, active: true },
   { label: "Challenges", icon: LayoutGrid, active: false },
-  { label: "Explore", icon: Compass, active: false },
+  { label: "Resources", icon: BookOpen, active: false },
   { label: "Profile", icon: User, active: false },
 ];
 
