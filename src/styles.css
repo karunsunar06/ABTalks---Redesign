@@ -30,6 +30,8 @@
   --radius-4xl: calc(var(--radius) + 16px);
   --color-accent-soft: var(--accent-soft);
   --color-accent-deep: var(--accent-deep);
+  --color-build: var(--build);
+  --color-build-soft: var(--build-soft);
   --color-surface: var(--surface);
   --shadow-elevated: var(--shadow-elevated);
   --shadow-soft: var(--shadow-soft);
