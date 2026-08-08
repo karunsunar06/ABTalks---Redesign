@@ -222,3 +222,75 @@ Limited implementation time and resources were prioritized toward the three requ
 /
 /dashboard
 /day/12
+
+## Phase 6 — Dashboard & Challenge Day
+
+Goal:
+Create the student dashboard and the complete Challenge Day experience.
+
+AI assistance:
+Used AI to structure the student dashboard around:
+- Current streak
+- Today's build
+- XP / experience
+- Projects
+- Learning progress
+- Quick actions
+- Achievements
+
+Created the `/day/12` Challenge Day experience with:
+- Day progress indicator
+- Build title and description
+- Estimated time and difficulty
+- Skills practiced
+- Build requirements
+- Hint section
+- GitHub proof-of-work submission
+- LinkedIn proof-of-work submission
+
+The Challenge Day page was intentionally made more focused than the dashboard while maintaining the same visual language.
+
+## Phase 7 — Navigation & Routing
+
+Goal:
+Connect the three required hackathon routes.
+
+Routes:
+- `/`
+- `/dashboard`
+- `/day/12`
+
+The dashboard's "Continue Building" action was connected to `/day/12`.
+
+The route map was documented separately in `ROUTES.md`.
+
+## Phase 8 — GitHub & Deployment
+
+Goal:
+Prepare the project for submission and create a production deployment.
+
+Actions:
+- Connected the project to GitHub.
+- Created the public `ABTalks---Redesign` repository.
+- Added project documentation.
+- Added `ROUTES.md`.
+- Added the AI usage log.
+- Fixed a syntax issue introduced while manually connecting the dashboard navigation.
+- Connected the GitHub repository to Vercel.
+- Successfully deployed the production build.
+
+Deployment:
+https://ab-talks-redesign-rho.vercel.app/
+
+## Phase 9 — Final QA
+
+Verified:
+- Landing page loads correctly.
+- Dashboard loads correctly.
+- `/day/12` loads correctly.
+- Dashboard navigation reaches `/day/12`.
+- Required routes are documented.
+- Production deployment is working.
+- Project is designed primarily for a 390px mobile viewport.
+
+The project was intentionally stopped at the required scope instead of adding unnecessary authentication, database, recruiter dashboards, or other out-of-scope features.
