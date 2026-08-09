@@ -109,3 +109,18 @@ The required routes are:
 /
 /dashboard
 /day/12
+
+### Dashboard States
+
+The dashboard supports three intentional student states:
+
+- **Active** — a student currently maintaining their progress
+- **First Day** — a new student with 0 streak, 0 XP, no projects, and no achievements
+- **Missed Day** — a student who missed a day, with their streak reset while their previous progress remains
+
+For development/testing, these states can be previewed with:
+
+```text
+/dashboard?state=active
+/dashboard?state=first-day
+/dashboard?state=missed
