@@ -150,3 +150,118 @@ Created a visual transformation journey that reinforces the value of committing 
 
 **Purpose:**
 Refine the existing dashboard without changing its structure by improving typography
+
+
+---
+
+## Phase 7 — Dashboard Edge States & Motion
+
+### Goal
+Improve the `/dashboard` experience to explicitly handle the real-world states required by the hackathon brief:
+
+- First-day student with no streak
+- Missed-day student
+- Empty projects / achievements
+- A subtle visual motion treatment without redesigning the dashboard
+
+### AI Tool
+Lovable
+
+### Prompt
+Updated only the existing `/dashboard` page.
+
+The existing dashboard visual language, typography, cards, spacing, teal accent, bottom navigation, and active state were preserved.
+
+Added mocked dashboard states for:
+
+1. Active user
+2. First-day user
+3. Missed-day user
+
+The first-day state uses:
+- 0 streak
+- 0 XP
+- 0 projects
+- No achievements
+- "Your journey starts here" messaging
+- "Start Building" CTA
+- Intentional empty project and achievement states
+
+The missed-day state uses:
+- 0 streak
+- Previous progress preserved
+- Supportive recovery messaging
+- Today's build remains available
+
+A subtle flowing SVG progress animation was also added with different visual paths for active, first-day, and missed-day states.
+
+The states are controlled through mocked local data and query parameters for testing rather than adding a visible developer state selector to the normal student UI.
+
+### Result
+Lovable successfully implemented the requested edge states and visual motion.
+
+The default `/dashboard` remains the normal active student experience.
+
+The first-day state can be tested using:
+
+`/dashboard?state=first-day`
+
+The missed-day state can be tested using:
+
+`/dashboard?state=missed`
+
+### Verification
+Verified that the first-day state renders correctly with:
+- 0 streak
+- 0 XP
+- Newcomer state
+- Empty projects
+- Today's build still available
+
+Verified that the implementation was committed to GitHub by Lovable.
+
+### Credit / Workflow Note
+This iteration consumed a significant portion of the remaining Lovable credits.
+
+After this iteration, further development should prioritize direct GitHub code edits for simple logic, routing, mocked data, and bug fixes. Lovable should be reserved for high-value visual/frontend changes.
+
+### Human / Manual Decisions
+Reviewed the generated dashboard components and confirmed that:
+- `DashboardNotice.tsx` handles state-specific messaging.
+- `ProgressFlow.tsx` provides the subtle flowing animation.
+- The existing active dashboard remains the default.
+- No unnecessary redesign was introduced.
+
+---
+
+## Phase 8 — Deployment & Production Workflow
+
+### Deployment
+The project was connected to GitHub and deployed through Vercel.
+
+Current workflow:
+
+Lovable → GitHub → Vercel → Production
+
+Vercel automatically deploys changes pushed to the `main` branch.
+
+### Production URL
+https://ab-talks-redesign-rho.vercel.app/
+
+### Important Development Decision
+Lovable is now being used primarily for:
+- UI design
+- visual improvements
+- animations
+- larger frontend design changes
+
+GitHub/manual editing is being used for:
+- routing
+- simple React/TypeScript logic
+- mocked data
+- text changes
+- bug fixes
+- configuration
+- documentation
+
+This reduces dependence on AI generation credits while keeping the visual workflow efficient.
