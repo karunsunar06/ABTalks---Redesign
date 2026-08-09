@@ -180,6 +180,13 @@ export const DASHBOARD_STATES: Record<
  *
  * Production default is always the active state.
  */
+/**
+ * Dev-only state switching:
+ * /dashboard?state=first-day
+ * /dashboard?state=missed
+ *
+ * Production default is always the active state.
+ */
 export function useDashboardMock(): DashboardMock {
   const [key, setKey] = useState<DashboardStateKey>("active");
 
@@ -194,9 +201,6 @@ export function useDashboardMock(): DashboardMock {
       setKey(value);
     }
   }, []);
-
-  return DASHBOARD_STATES[key];
-}
 
   return DASHBOARD_STATES[key];
 }
