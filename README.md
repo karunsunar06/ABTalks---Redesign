@@ -110,17 +110,97 @@ The required routes are:
 /dashboard
 /day/12
 
-### Dashboard States
+# Route Map
+
+The required routes are:
+
+```text
+/
+/dashboard
+/day/12
+Dashboard States
 
 The dashboard supports three intentional student states:
 
-- **Active** — a student currently maintaining their progress
-- **First Day** — a new student with 0 streak, 0 XP, no projects, and no achievements
-- **Missed Day** — a student who missed a day, with their streak reset while their previous progress remains
+Active — a student currently maintaining their progress
+First Day — a new student with 0 streak, 0 XP, no projects, and no achievements
+Missed Day — a student who missed a day, with their streak reset while their previous progress remains
 
 For development/testing, these states can be previewed with:
 
-```text
 /dashboard?state=active
 /dashboard?state=first-day
 /dashboard?state=missed
+
+The production dashboard defaults to the active state.
+
+Day 12 — AI Resume Analyzer
+
+Day 12 challenges the student to build an AI-powered resume analyzer.
+
+The build focuses on:
+
+LLM APIs
+Prompt Engineering
+Structured Output
+
+Students are expected to:
+
+Accept resume text or a resume file
+Extract important skills and experience
+Identify strengths and missing skills
+Generate actionable improvement suggestions
+
+The challenge also demonstrates the complete build → prove → ship flow.
+
+Proof of Work
+
+Students can add:
+
+GitHub repository or commit proof
+LinkedIn post proof
+
+Once both proofs are added, the student can submit the build and receive a Build Shipped confirmation.
+
+The current implementation is a frontend prototype, so proof verification and progress persistence are mocked rather than connected to a backend.
+
+Technology
+React
+TypeScript
+TanStack Start
+TanStack Router
+Tailwind CSS
+Lucide React
+Vite
+GitHub
+Vercel
+AI-Assisted Development
+
+AI was used throughout the development process for product exploration, UI development, component implementation, routing, debugging, refactoring, and documentation.
+
+The development process is documented in:
+
+PROMPTS.md — major prompts and AI interactions
+AI_LOG.md — development decisions and AI-assisted workflow
+
+The final implementation was reviewed and adapted during development rather than being accepted as unmodified AI output.
+
+Deployment
+
+The project is deployed on Vercel from the main branch.
+
+Live: https://ab-talks-redesign-rho.vercel.app/
+
+Current Scope
+
+This submission focuses on the core product experience and prototype flow.
+
+The following are currently frontend/mock implementations:
+
+Authentication
+Persistent user accounts
+Database
+Real GitHub verification
+Real LinkedIn verification
+Persistent streak updates
+Persistent challenge submissions
