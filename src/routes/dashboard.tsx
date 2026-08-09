@@ -8,6 +8,8 @@ import { QuickActions } from "@/components/dashboard/QuickActions";
 import { RecentAchievement } from "@/components/dashboard/RecentAchievement";
 import { BottomNav } from "@/components/dashboard/BottomNav";
 import { WaveBackground } from "@/components/WaveBackground";
+import { DashboardNotice } from "@/components/dashboard/DashboardNotice";
+import { useDashboardMock } from "@/lib/dashboard-state";
 
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
@@ -32,6 +34,7 @@ export const Route = createFileRoute("/dashboard")({
 
 function Dashboard() {
   const [celebrate, setCelebrate] = useState(false);
+  const state = useDashboardMock();
 
   const handleShipped = () => {
     setCelebrate(false);
@@ -42,13 +45,14 @@ function Dashboard() {
     <main className="relative min-h-screen overflow-x-hidden bg-background">
       <WaveBackground className="h-[420px]" />
       <div className="mx-auto w-full max-w-md px-5 pb-28 sm:max-w-xl">
-        <DashboardGreeting />
+        <DashboardGreeting headline={state.greeting.headline} sub={state.greeting.sub} />
         <div className="space-y-7">
-          <StreakXP celebrate={celebrate} />
-          <TodaysBuild onShipped={handleShipped} />
-          <ProgressCarousel />
+          <DashboardNotice state={state} />
+          <StreakXP celebrate={celebrate} state={state} />
+          <TodaysBuild onShipped={handleShipped} ctaLabel={state.ctaLabel} />
+          <ProgressCarousel state={state} />
           <QuickActions />
-          <RecentAchievement />
+          <RecentAchievement state={state} />
         </div>
       </div>
       <BottomNav />
