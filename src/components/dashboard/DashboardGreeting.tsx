@@ -6,7 +6,13 @@ function greetingFor(hour: number) {
   return "Good evening";
 }
 
-export function DashboardGreeting() {
+export function DashboardGreeting({
+  headline = "Builder.",
+  sub = "You've got one thing to ship today.",
+}: {
+  headline?: string;
+  sub?: string;
+}) {
   const [greeting, setGreeting] = useState("Good evening");
 
   useEffect(() => {
@@ -17,10 +23,10 @@ export function DashboardGreeting() {
     <div className="relative overflow-hidden pt-8 pb-6">
       <div className="animate-rise" style={{ animationDelay: "40ms" }}>
         <h1 className="text-[1.75rem] font-bold leading-[1.15] tracking-[-0.03em] text-foreground">
-          {greeting}, Builder.
+          {greeting}, {headline}
         </h1>
         <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
-          You&apos;ve got one thing to ship today.
+          {sub}
         </p>
       </div>
     </div>

@@ -1,5 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-import { Github, Globe, Sparkles, Flame, Trophy, Rocket } from "lucide-react";
+import {
+  Github,
+  Globe,
+  Sparkles,
+  Flame,
+  Trophy,
+  Rocket,
+  FolderPlus,
+  Lock,
+} from "lucide-react";
+import type { DashboardMock } from "@/lib/dashboard-state";
+
+const ICONS = { rocket: Rocket, flame: Flame, globe: Globe, sparkles: Sparkles } as const;
 
 function CardShell({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -14,17 +26,47 @@ function CardShell({ label, children }: { label: string; children: React.ReactNo
   );
 }
 
-function ProjectsCard() {
+function EmptyBlock({
+  icon: Icon,
+  title,
+  body,
+}: {
+  icon: typeof FolderPlus;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="flex flex-col items-center rounded-2xl bg-surface px-4 py-6 text-center">
+      <span className="inline-flex size-10 items-center justify-center rounded-2xl border border-border bg-card text-accent">
+        <Icon className="size-4" strokeWidth={2.2} />
+      </span>
+      <p className="mt-3 text-[13px] font-semibold tracking-tight text-foreground">{title}</p>
+      <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{body}</p>
+    </div>
+  );
+}
+
+function ProjectsCard({ state }: { state: DashboardMock }) {
+  if (state.projects === 0) {
+    return (
+      <CardShell label="Projects">
+        <EmptyBlock
+          icon={FolderPlus}
+          title="No projects yet"
+          body="Your first shipped project will appear here."
+        />
+      </CardShell>
+    );
+  }
+
   return (
     <CardShell label="Projects">
       <div className="space-y-4">
         <div className="flex items-baseline gap-2">
           <span className="text-4xl font-bold leading-none tracking-tight text-foreground">
-            27
+            {state.projects}
           </span>
-          <span className="text-[13px] font-medium text-muted-foreground">
-            projects built
-          </span>
+          <span className="text-[13px] font-medium text-muted-foreground">projects built</span>
         </div>
 
         <div className="flex items-center gap-2.5 rounded-2xl bg-surface p-3">
@@ -59,14 +101,7 @@ function ProjectsCard() {
   );
 }
 
-const learning = [
-  { name: "Python", level: "Strong", value: 82 },
-  { name: "LLMs", level: "Advancing", value: 68 },
-  { name: "Prompt Engineering", level: "Advancing", value: 61 },
-  { name: "Machine Learning", level: "Building", value: 38 },
-];
-
-function LearningCard() {
+function LearningCard({ state }: { state: DashboardMock }) {
   const [shown, setShown] = useState(false);
 
   useEffect(() => {
@@ -77,15 +112,13 @@ function LearningCard() {
   return (
     <CardShell label="Learning">
       <div className="space-y-4">
-        {learning.map((skill, i) => (
+        {state.skills.map((skill, i) => (
           <div key={skill.name}>
             <div className="flex items-baseline justify-between">
               <span className="text-[13px] font-semibold tracking-tight text-foreground">
                 {skill.name}
               </span>
-              <span className="text-[11px] font-medium text-muted-foreground">
-                {skill.level}
-              </span>
+              <span className="text-[11px] font-medium text-muted-foreground">{skill.level}</span>
             </div>
             <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-secondary">
               <div
@@ -103,43 +136,51 @@ function LearningCard() {
   );
 }
 
-const achievements = [
-  { name: "First Ship", note: "Day 1 project pushed", icon: Rocket },
-  { name: "Streak Keeper", note: "21 days unbroken", icon: Flame },
-  { name: "Public Builder", note: "10 projects shared", icon: Globe },
-  { name: "Deep Diver", note: "First LLM fine-tune", icon: Sparkles },
-];
+function AchievementsCard({ state }: { state: DashboardMock }) {
+  if (state.achievements.length === 0) {
+    return (
+      <CardShell label="Achievements">
+        <EmptyBlock
+          icon={Lock}
+          title="Your first achievement is waiting."
+          body="Complete your first build to unlock it."
+        />
+      </CardShell>
+    );
+  }
 
-function AchievementsCard() {
   return (
     <CardShell label="Achievements">
       <div className="space-y-2.5">
-        {achievements.map(({ name, note, icon: Icon }) => (
-          <div
-            key={name}
-            className="flex items-center gap-3 rounded-2xl bg-surface p-3 transition-colors duration-200 hover:bg-secondary"
-          >
-            <span className="inline-flex size-8 items-center justify-center rounded-xl border border-border bg-card text-foreground">
-              <Icon className="size-[15px]" strokeWidth={2} />
-            </span>
-            <div className="min-w-0">
-              <p className="truncate text-[13px] font-semibold tracking-tight text-foreground">
-                {name}
-              </p>
-              <p className="truncate text-[11px] text-muted-foreground">{note}</p>
+        {state.achievements.map(({ name, note, icon }) => {
+          const Icon = ICONS[icon];
+          return (
+            <div
+              key={name}
+              className="flex items-center gap-3 rounded-2xl bg-surface p-3 transition-colors duration-200 hover:bg-secondary"
+            >
+              <span className="inline-flex size-8 items-center justify-center rounded-xl border border-border bg-card text-foreground">
+                <Icon className="size-[15px]" strokeWidth={2} />
+              </span>
+              <div className="min-w-0">
+                <p className="truncate text-[13px] font-semibold tracking-tight text-foreground">
+                  {name}
+                </p>
+                <p className="truncate text-[11px] text-muted-foreground">{note}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
         <div className="flex items-center gap-2 pt-1 text-[11px] font-medium text-muted-foreground">
           <Trophy className="size-3.5" strokeWidth={2} />
-          4 of 12 unlocked
+          {state.achievementsUnlocked} of 12 unlocked
         </div>
       </div>
     </CardShell>
   );
 }
 
-export function ProgressCarousel() {
+export function ProgressCarousel({ state }: { state: DashboardMock }) {
   const scroller = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
 
@@ -158,9 +199,9 @@ export function ProgressCarousel() {
         className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-5 pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={{ scrollBehavior: "smooth", overscrollBehaviorX: "contain" }}
       >
-        <ProjectsCard />
-        <LearningCard />
-        <AchievementsCard />
+        <ProjectsCard state={state} />
+        <LearningCard state={state} />
+        <AchievementsCard state={state} />
       </div>
 
       <div className="mt-4 flex justify-center gap-1.5">
