@@ -19,7 +19,7 @@ This document records the AI-assisted development process used to build the ABTa
 
 ---
 
-## Prompt 1
+## Prompt 2.1
 
 **Date:** 2026-08-07
 
@@ -38,7 +38,7 @@ Used the discussion to define the brand message, target audience, landing page s
 
 ---
 
-## Prompt 2
+## Prompt 2.2
 
 **Date:** 2026-08-07
 
@@ -111,37 +111,7 @@ Planned the "What You'll Leave With", "What We Believe", "How the Challenge Work
 
 
 
-## Prompt 4
-
-**Tool:** Lovable
-
-**Feature:** Trust Section & Challenge Flow
-
-**Purpose:**
-Design a trust-building section and clearly explain the 60-day challenge flow.
-
-**Prompt:**
-Designed a landing page section that motivates students to commit by focusing on consistency, real projects, public learning, and a simple challenge flow.
-
-**Outcome:**
-Generated the "Why Students Stay Consistent" and "How the Challenge Works" sections, maintaining the product's mission-driven design language.
-
-
-## Prompt 5
-
-**Tool:** Lovable
-
-**Feature:** Transformation Section
-
-**Purpose:**
-Help visitors visualize the outcome of completing the 60-day challenge.
-
-**Prompt:**
-Design a mobile-first section that illustrates the student's transformation from Day 1 to Day 60, emphasizing confidence, real projects, GitHub activity, and portfolio growth rather than a curriculum roadmap.
-
-**Outcome:**
-Created a visual transformation journey that reinforces the value of committing to the challenge.
-
+##
 ## Prompt 6
 
 **Tool:** Lovable
@@ -161,7 +131,7 @@ Improve the `/dashboard` experience to explicitly handle the real-world states r
 
 - First-day student with no streak
 - Missed-day student
-- Empty projects / achievements
+- Empty projects/achievements
 - A subtle visual motion treatment without redesigning the dashboard
 
 ### AI Tool
@@ -265,3 +235,160 @@ GitHub/manual editing is being used for:
 - documentation
 
 This reduces dependence on AI generation credits while keeping the visual workflow efficient.
+
+
+---
+
+## Phase 9 — Dashboard State Logic
+
+### Goal
+
+Make the dashboard state system work correctly in the production code while keeping the normal dashboard unchanged.
+
+### AI Tool
+
+ChatGPT
+
+### Prompt / Assistance
+
+Implemented the dashboard mock-state logic using TypeScript and React.
+
+The dashboard supports three states:
+
+- `active`
+- `first-day`
+- `missed`
+
+The state data includes:
+
+- Streak
+- XP
+- Level
+- Completed days
+- Projects
+- Skills
+- Achievements
+- State-specific messaging
+- Today's CTA
+
+Query parameters are used for development/testing:
+
+`/dashboard?state=active`
+
+`/dashboard?state=first-day`
+
+`/dashboard?state=missed`
+
+The active state remains the default when no state parameter is provided.
+
+### Result
+
+The dashboard state system was implemented and manually tested.
+
+The first-day state correctly shows:
+
+- 0 streak
+- 0 XP
+- 0 projects
+- No achievements
+- Newcomer status
+- Start Building CTA
+
+The missed-day state correctly shows:
+
+- 0 streak
+- Previous XP/progress preserved
+- Recovery messaging
+- Today's build still available
+
+The normal `/dashboard` route continues to display the active student state.
+
+### Human / Manual Decisions
+
+The state system was kept intentionally mocked because the hackathon submission focuses on the product experience rather than implementing authentication, databases, or persistent user accounts.
+
+---
+
+## Phase 10 — Day 12 Submission Flow
+
+### Goal
+
+Complete the Day 12 challenge experience so the student can move through the full:
+
+**Build → Prove → Ship**
+
+flow.
+
+### AI Tool
+
+ChatGPT
+
+### Prompt / Assistance
+
+Reviewed and refined the existing `/day/12` route to support GitHub proof, LinkedIn proof, and a post-submission shipped state.
+
+The page was kept focused on the existing design rather than introducing a new visual system.
+
+### Result
+
+The Day 12 page now includes:
+
+- Challenge description
+- Skills being practiced
+- Build requirements
+- Expandable hint section
+- GitHub proof input
+- LinkedIn proof input
+- Submission CTA
+- "Build Shipped" confirmation
+- Continue Building CTA back to the dashboard
+
+Both GitHub and LinkedIn proof fields must be added before the submission button becomes active.
+
+### Human / Manual Decisions
+
+The proof verification and progress persistence remain mocked for the prototype.
+
+The goal was to demonstrate the complete student journey without spending remaining development time implementing backend infrastructure.
+
+---
+
+## Phase 11 — Documentation & Submission Preparation
+
+### Goal
+
+Prepare the repository for hackathon submission and document the AI-assisted development process.
+
+### AI Tool
+
+ChatGPT
+
+### Work Completed
+
+Updated the project documentation to clearly communicate:
+
+- Product idea
+- Core routes
+- Dashboard states
+- Day 12 challenge
+- Proof-of-work flow
+- Technology stack
+- AI-assisted development
+- Deployment
+- Current prototype limitations
+
+The README and `PROMPTS.md` were updated to make the development process and project scope easier for judges to understand.
+
+### Deployment Workflow
+
+The final development workflow is:
+
+**AI-assisted development → GitHub → Vercel → Production**
+
+Simple code and documentation changes are handled directly through GitHub when possible, while Lovable is reserved for high-value frontend and visual work.
+
+### Human Review
+
+The final implementation is manually reviewed before submission.
+
+AI-generated code and suggestions are treated as development assistance rather than automatically accepted output.
